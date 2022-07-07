@@ -6,7 +6,6 @@ const db = mysql.createConnection({
   host: 'localhost',
   user: 'root',
   password: '',
-  database: 'db1',
 });
 //connect
 db.connect((err) => {
@@ -17,9 +16,14 @@ db.connect((err) => {
 });
 const app = express();
 const port = 3000;
-
-app.get('/', (req, res) => {
-  res.send('Hello World!');
+//create new database
+app.get('/createdb', (req, res) => {
+  let sql = 'CREATE DATABASE nodemysql';
+  db.query(sql, (err, result) => {
+    if (err) throw err;
+    console.log(result);
+    res.send('database baru berhasil dibuat');
+  });
 });
 
 app.listen(port, () => {
