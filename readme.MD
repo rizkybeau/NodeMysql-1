@@ -18,3 +18,15 @@
 3. Delete post /deletepost/:id
 4. fetch post /getposts
 5. get single posts /getposts/:id
+
+
+- get single posts
+//select single posts
+app.get('/getposts/:id', (req, res) => {
+  let sql = `SELECT * FROM posts WHERE id =${req.params.id}`;
+  let query = db.query(sql, (err, result) => {
+    if (err) throw err;
+    console.log(result);
+    res.send('post fetched...');
+  });
+});
