@@ -21,8 +21,8 @@
 
 
 - get single posts
-//select single posts
-app.get('/getposts/:id', (req, res) => {
+- //select single posts
+- app.get('/getposts/:id', (req, res) => {
   let sql = `SELECT * FROM posts WHERE id =${req.params.id}`;
   let query = db.query(sql, (err, result) => {
     if (err) throw err;
